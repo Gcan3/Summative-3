@@ -1,0 +1,221 @@
+#include <iostream>
+#include <string>
+#include <math.h>
+#include <array>
+using namespace std;
+
+void checkoutCof(int coffeechoose)
+{
+    //Cost using array and user's money input w/ cin.fail
+    int cost[] = { 0,3,2,1 };
+    double money;
+    cout << "Your total cost is " << cost[coffeechoose] << " AED" << endl;
+    cout << "\n\nPlease state how much you would pay in whole (nothing below 1 AED and the total cost):" << endl;
+    cin >> money;
+
+    while (cin.fail() || money < 1 || money < cost[coffeechoose])
+    {
+        cout << "Please enter valid amount of money (nothing below 1 AED and the total cost)" << endl;
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cin >> money;
+    }
+
+    //Calculating change using the cost array
+    double change = money - cost[coffeechoose];
+    cout << "\nYou have paid " << money << " AED and your change is " << change << " AED." << endl;
+    cout << "Your coffee is now being brewed, please wait and enjoy :)" << endl;
+    cout << "\n\n\nEND OF PROGRAM\n\n\n";
+
+}
+
+void checkoutTea(int teachoose) 
+{
+    //Cost using array and user's money input w/ cin.fail
+    int cost[] = { 0,3,2,1 };
+    double money;
+    cout << "Your total cost is " << cost[teachoose] << " AED" << endl;
+    cout << "\n\nPlease state how much you would pay in whole (nothing below 1 AED and the total cost):" << endl;
+    cin >> money;
+
+    while (cin.fail() || money < 1 || money < cost[teachoose])
+    {
+        cout << "Please enter valid amount of money (nothing below 1 AED and the total cost)" << endl;
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cin >> money;
+    }
+
+    //Calculating change using the cost array
+    double change = money - cost[teachoose];
+    cout << "\nYou have paid " << money << " AED and your change is " << change << " AED." << endl;
+    cout << "Your tea is now being made, please wait and enjoy :)" << endl;
+    cout << "\n\n\nEND OF PROGRAM\n\n\n";
+}
+
+void tea()
+{
+    //Tea menu by array
+    cout << "\n\nYou have chosen Tea. Please refer to our menu of our special made teas: " << endl;
+    string teas[3] = { "1 Ice tea (3 AED)", "2 Milk tea (2 AED)", "3 Black tea (1 AED)" };
+    for (auto tea : teas) {
+        cout << tea << endl;
+    }
+
+    cout << endl;
+
+    //Sugar add-on using do-while and switch conditional
+    char sug;
+    do
+    {
+        cout << "Before choosing, please first choose if you would like to add sugar in your tea: Input Y (for yes) or N (for no)" << endl;
+        cin >> sug;
+    } while ((sug != 'Y') && (sug != 'N') && (sug != 'y') && (sug != 'n'));
+
+    switch (sug) 
+    {
+    case 'Y':
+    case 'y':
+    {
+        cout << "Sugar added :)" << endl;
+        break;
+    }
+    case 'N':
+    case 'n':
+    {
+        cout << "Sugar not added :)" << endl;
+        break;
+    }
+    default:
+    {
+        cout << "Error in program" << endl;
+        break;
+    }
+    }
+
+    //Tea selection process w/ cin.fail
+    cout << "\n\nNow, choose the tea based on their number you'd like to purchase:" << endl;
+    int teaChoose;
+    cin >> teaChoose;
+
+    while (cin.fail() || teaChoose != 1 && teaChoose != 2 && teaChoose != 3)
+    {
+        cout << "Choose the available tea options: " << endl;
+        cout << "Input 1 for ice tea, 2 for milk tea, and 3 for black tea" << endl;
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cin >> teaChoose;
+    }
+
+    //Displaying the user's choice of tea
+    if (teaChoose == 1) {
+        cout << "You have chosen Iced tea" << endl;
+    }
+    else if (teaChoose == 2) {
+        cout << "You have chosen Milk tea" << endl;
+    }
+    else {
+        cout << "You have chosen Black tea" << endl;
+    }
+
+    //Moving to checkout function
+    checkoutTea(teaChoose);
+}
+
+void coffee() 
+{
+    //Coffee menu by array
+    cout << "\n\nYou have chosen coffee. Please refer to our menu of our special brewed coffees: " << endl;
+    string coffee[3] = { "1 Ice coffee (3 AED)", "2 Milk coffee (2 AED)", "3 Black coffee (1 AED)" };
+    for (auto cof : coffee) {
+        cout << cof << endl;
+    }
+
+    cout << endl;
+
+    //Sugar add-on using do-while and switch conditional
+    char sug;
+    do
+    {
+        cout << "Before choosing, please first choose if you would like to add sugar in your coffee: Input Y (for yes) or N (for no)" << endl;
+        cin >> sug;
+    } while ((sug != 'Y') && (sug != 'N') && (sug != 'y') && (sug != 'n'));
+
+    switch (sug)
+    {
+    case 'Y':
+    case 'y':
+    {
+        cout << "Sugar added :)" << endl;
+        break;
+    }
+    case 'N':
+    case 'n':
+    {
+        cout << "Sugar not added :)" << endl;
+        break;
+    }
+    default:
+    {
+        cout << "Error in program" << endl;
+        break;
+    }
+    }
+
+    //Coffee selection process w/ cin.fail
+    cout << "\n\nNow, choose the coffee based on their number you'd like to purchase:" << endl;
+    int coffeeChoose;
+    cin >> coffeeChoose;
+
+    while (cin.fail() || coffeeChoose != 1 && coffeeChoose != 2 && coffeeChoose != 3)
+    {
+        cout << "\nChoose the available coffee options: " << endl;
+        cout << "Input 1 for Ice coffee, 2 for milk coffee, and 3 for black coffee" << endl;
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cin >> coffeeChoose;
+    }
+
+    //Displaying the user's choice of coffee
+    if (coffeeChoose == 1) {
+        cout << "You have chosen Iced coffee" << endl;
+    }
+    else if (coffeeChoose == 2) {
+        cout << "You have chosen Milk coffee" << endl;
+    }
+    else {
+        cout << "You have chosen Black coffee" << endl;
+    }
+
+    //Moving to checkout function
+    checkoutCof(coffeeChoose);
+}
+
+int main()
+{
+    //Customer Intro
+    cout << "Hello, welcome to Cafe Nipponica!" << endl;
+    cout << "It is winter season and we have just the right specialty drinks!\nNotice: Customers can only purchase one drink at a time." << endl;
+    cout << "\nPlease choose if you want coffee or tea:\n\nFor Coffee, please enter 1\n\nFor Tea, please enter 2\n\n" << endl;
+
+    //Choosing either coffee or tea w/ cin.fail
+    int choose;
+    cin >> choose;
+
+    while (cin.fail() || choose != 1 && choose != 2)
+    {
+        cout << "Choose from 1 (Coffee) or 2 (Tea): " << endl;
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cin >> choose;
+    }
+
+    //invoking the function of the chosen drink
+    if (choose == 1) {
+        coffee();
+    }
+    else {
+        tea();
+    }
+    return 0;
+}
